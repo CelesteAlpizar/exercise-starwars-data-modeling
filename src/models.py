@@ -22,12 +22,12 @@ class Favorite_Characters(Base):
     __tablename__ = 'favorite_characters'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
-    character_id = Column(Integer, primary_key=True) 
+    character_id = Column(Integer, ForeignKey('character.id'), primary_key=True) 
     user = relationship(User)
 
 class Character(Base):
     __tablename__ = 'character'
-    id = Column(Integer, ForeignKey('favorite_characters.id'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     birth_year = Column(String(250), nullable=False)
     gender = Column(Integer, nullable=False)
@@ -40,12 +40,12 @@ class Favorite_Planets(Base):
     __tablename__ = 'favorite_planets'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), primary_key=True)
-    planet_id = Column(Integer, primary_key=True) 
+    planet_id = Column(Integer, ForeignKey('planet.id'), primary_key=True) 
     user = relationship(User)
 
 class Planet(Base):
     __tablename__ = 'planet'
-    id = Column(Integer, ForeignKey('favorite_planets.id'), primary_key=True)
+    id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
     climate = Column(String(250), nullable=False)
     population = Column(Integer, nullable=False)
